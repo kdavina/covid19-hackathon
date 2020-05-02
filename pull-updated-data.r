@@ -13,5 +13,8 @@ request <- GET(url = path,
                     outFields = "Confirmed, Deaths, FIPS"   
                 )
             )
-print(request$status_code)
-response <- content(request, as = "text", encoding = "UTF-8")
+if (request$status_code == 200){
+    response <- content(request, as = "text", encoding = "UTF-8")
+} else{
+    print("Request failed")
+}
